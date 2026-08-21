@@ -39,7 +39,7 @@ window.WESTIN_PROJECTS = [
       thumbnail: "https://i.ytimg.com/vi/9dDQyViynmQ/maxresdefault.jpg",
       videos: [
         { title: "Stroll on State", youtubeId: "9dDQyViynmQ" },
-      /  { title: "Film two", youtubeId: "YOUTUBE_ID" },/
+      // { title: "Film two", youtubeId: "YOUTUBE_ID" },
       ],
     },
 
