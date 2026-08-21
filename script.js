@@ -216,26 +216,52 @@ function renderProjects() {
 function renderReels() {
   if (!reelsGrid) return;
 
-  reelsGrid.innerHTML = `
-    <div class="instagram-reels">
-      <blockquote
-        class="instagram-media"
-        data-instgrm-permalink="https://www.instagram.com/reel/DcSIz8eMH0s/"
-        data-instgrm-version="14"
-        style="background:#FFF; border:0; border-radius:0; margin:0; max-width:540px; min-width:326px; width:100%;">
-      </blockquote>
+  reelsGrid.innerHTML = "";
 
-      <blockquote
-        class="instagram-media"
-        data-instgrm-permalink="https://www.instagram.com/reel/DcMP86zpLEE/"
-        data-instgrm-version="14"
-        style="background:#FFF; border:0; border-radius:0; margin:0; max-width:540px; min-width:326px; width:100%;">
-      </blockquote>
-    </div>
-  `;
+  reelCollections.forEach((collection) => {
+    collection.reels.forEach((reel) => {
+      const item = document.createElement("div");
+      item.className = "instagram-reel-item";
+
+      if (reel.instagramUrl) {
+        item.innerHTML = `
+          <h3>${reel.title}</h3>
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="${reel.instagramUrl}"
+            data-instgrm-version="14">
+          </blockquote>
+        `;
+      }
+
+      if (reel.youtubeId) {
+        item.innerHTML = `
+          <h3>${reel.title}</h3>
+          <div class="youtube-reel">
+            <iframe
+              src="https://www.youtube.com/embed/${reel.youtubeId}?rel=0&playsinline=1"
+              title="${reel.title}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        `;
+      }
+
+      reelsGrid.appendChild(item);
+    });
+  });
+
+  const processEmbeds = () => window.instgrm?.Embeds.process();
 
   if (window.instgrm) {
-    window.instgrm.Embeds.process();
+    processEmbeds();
+  } else if (!document.querySelector('script[src*="instagram.com/embed.js"]')) {
+    const instagramScript = document.createElement("script");
+    instagramScript.src = "https://www.instagram.com/embed.js";
+    instagramScript.async = true;
+    instagramScript.onload = processEmbeds;
+    document.body.appendChild(instagramScript);
   }
 }
 
