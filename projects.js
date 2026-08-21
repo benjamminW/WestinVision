@@ -75,12 +75,24 @@ window.WESTIN_REELS = [
     thumbnail: "assets/reel.JPEG",
     reels: [
       {
-        title: "Community Reel",
+        title: "Alderperson Bell Reel",
         instagramUrl: "https://www.instagram.com/reel/DcSIz8eMH0s/",
       },
       {
-        title: "Politics Reel",
+        title: "Alderperson Bell Reel",
         instagramUrl: "https://www.instagram.com/reel/DcMP86zpLEE/",
+      },
+      {
+        title: "Alderperson Bell Reel",
+        instagramUrl: "https://www.instagram.com/reel/DZuoPUiv2h6/",
+      },
+      {
+        title: "Corey Dixon Reel",
+        youtubeId: "HyHtmspZ6hA",
+      },
+      {
+        title: "Home for Good - Maurice West Reel",
+        youtubeId: "rJdOliXAh9g",
       },
     ],
   },
