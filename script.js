@@ -1,8 +1,12 @@
 const menuButton = document.querySelector(".menu-button");
 const menu = document.querySelector(".nav-menu");
 const projectGrid = document.querySelector("#project-grid");
+const reelsGrid = document.querySelector("#reels-grid");
 const projects = Array.isArray(window.WESTIN_PROJECTS)
   ? window.WESTIN_PROJECTS
+  : [];
+const reelCollections = Array.isArray(window.WESTIN_REELS)
+  ? window.WESTIN_REELS
   : [];
 
 menuButton?.addEventListener("click", () => {
@@ -18,13 +22,19 @@ menu?.querySelectorAll("a").forEach((link) => {
 });
 
 function youtubeEmbedUrl(videoId) {
+  const pageOrigin =
+    window.location.origin && window.location.origin !== "null"
+      ? window.location.origin
+      : "https://www.youtube.com";
   const params = new URLSearchParams({
     autoplay: "1",
     rel: "0",
     playsinline: "1",
+    origin: pageOrigin,
+    widget_referrer: window.location.href,
   });
 
-  return `https://www.youtube-nocookie.com/embed/${videoId}?${params}`;
+  return `https://www.youtube.com/embed/${videoId}?${params}`;
 }
 
 function openProject(project, trigger) {
@@ -69,6 +79,12 @@ function openProject(project, trigger) {
   player.allowFullscreen = true;
   playerFrame.append(player);
 
+  const youtubeLink = document.createElement("a");
+  youtubeLink.className = "youtube-fallback";
+  youtubeLink.target = "_blank";
+  youtubeLink.rel = "noopener";
+  youtubeLink.textContent = "Having trouble? Watch on YouTube ↗";
+
   const videoList = document.createElement("div");
   videoList.className = "video-list";
   videoList.setAttribute("aria-label", `${project.title} films`);
@@ -98,6 +114,7 @@ function openProject(project, trigger) {
     const video = project.videos[index];
     player.src = youtubeEmbedUrl(video.youtubeId);
     player.title = `${project.title}: ${video.title}`;
+    youtubeLink.href = `https://www.youtube.com/watch?v=${video.youtubeId}`;
 
     videoButtons.forEach((button, buttonIndex) => {
       const active = buttonIndex === index;
@@ -117,7 +134,7 @@ function openProject(project, trigger) {
     trigger.focus();
   });
 
-  panel.append(closeButton, heading, playerFrame, videoList);
+  panel.append(closeButton, heading, playerFrame, youtubeLink, videoList);
   modal.append(panel);
   document.body.append(modal);
   document.body.classList.add("modal-open");
@@ -196,7 +213,34 @@ function renderProjects() {
   });
 }
 
+function renderReels() {
+  if (!reelsGrid) return;
+
+  reelsGrid.innerHTML = `
+    <div class="instagram-reels">
+      <blockquote
+        class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/reel/DcSIz8eMH0s/"
+        data-instgrm-version="14"
+        style="background:#FFF; border:0; border-radius:0; margin:0; max-width:540px; min-width:326px; width:100%;">
+      </blockquote>
+
+      <blockquote
+        class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/reel/DcMP86zpLEE/"
+        data-instgrm-version="14"
+        style="background:#FFF; border:0; border-radius:0; margin:0; max-width:540px; min-width:326px; width:100%;">
+      </blockquote>
+    </div>
+  `;
+
+  if (window.instgrm) {
+    window.instgrm.Embeds.process();
+  }
+}
+
 renderProjects();
+renderReels();
 
 const reducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",

@@ -30,8 +30,7 @@ window.WESTIN_PROJECTS = [
     ],
   },
 
-  
-   
+     
    {
       id: "Community-Politics",
       title: "Community and Politics",
@@ -43,8 +42,6 @@ window.WESTIN_PROJECTS = [
       /  { title: "Film two", youtubeId: "YOUTUBE_ID" },/
       ],
     },
-
-
 
   /*
    * COPY THIS TEMPLATE TO ADD ANOTHER PROJECT:
@@ -63,12 +60,43 @@ window.WESTIN_PROJECTS = [
    */
 ];
 
-    window.WESTIN_REELS = [
+/*
+ * INSTAGRAM REELS
+ *
+ * Each collection becomes one group in the Reels section. Add additional
+ * collections by copying the object below. A thumbnail may be reused across
+ * reels or overridden on an individual reel with its own `thumbnail` value.
+ */
+window.WESTIN_REELS = [
   {
-    title: "Community and Politics Reels",
+    id: "community-and-politics",
+    title: "Community & Politics",
     category: "Politics",
-    instagramUrl: "https://www.instagram.com/reel/DcSIz8eMH0s/",
-    instagramUrl: "https://www.instagram.com/reel/DcMP86zpLEE/",
-    thumbnail: "assets/reel.JPEG"
+    thumbnail: "assets/reel.JPEG",
+    reels: [
+      {
+        title: "Community Reel",
+        instagramUrl: "https://www.instagram.com/reel/DcSIz8eMH0s/",
+      },
+      {
+        title: "Politics Reel",
+        instagramUrl: "https://www.instagram.com/reel/DcMP86zpLEE/",
+      },
+    ],
   },
-    ]
+
+  /*
+   * COPY THIS TEMPLATE TO ADD ANOTHER REEL COLLECTION:
+   *
+   * {
+   *   id: "short-unique-name",
+   *   title: "Collection title",
+   *   category: "Campaign · Social",
+   *   thumbnail: "assets/collection-cover.jpg",
+   *   reels: [
+   *     { title: "Reel one", instagramUrl: "https://www.instagram.com/reel/REEL_CODE/" },
+   *     { title: "Reel two", instagramUrl: "https://www.instagram.com/reel/REEL_CODE/" },
+   *   ],
+   * },
+   */
+];

@@ -23,6 +23,12 @@ For a standard YouTube link such as `https://www.youtube.com/watch?v=ABC123`, th
 
 Keep every video public or unlisted and make sure embedding is allowed in YouTube Studio.
 
+## Add Instagram Reels
+
+The same `projects.js` file includes `window.WESTIN_REELS`. Each collection creates a group of vertical cards below Selected Work. Add a new collection by copying the commented Reel template at the bottom of the file.
+
+For each Reel, use its full Instagram URL. The website opens it on Instagram in a new tab, which keeps the portfolio fast and avoids the fragile Instagram player inside the website. Save a portrait cover image inside `assets/` and set its exact filename as the collection's `thumbnail`. GitHub Pages filenames are case-sensitive, so `reel.JPEG` and `reel.jpeg` are different files.
+
 ## Publish with GitHub Pages
 
 1. Create a new GitHub repository.
