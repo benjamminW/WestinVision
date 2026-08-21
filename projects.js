@@ -37,7 +37,7 @@ window.WESTIN_PROJECTS = [
       title: "Community and Politics",
       category: "Short Form",
       description: "Different videos for campaigns and politicians in the Rockford area.",
-      thumbnail: "https://i.ytimg.com/vi/YOUTUBE_ID/maxresdefault.jpg",
+      thumbnail: "https://i.ytimg.com/vi/9dDQyViynmQ/maxresdefault.jpg",
       videos: [
         { title: "Stroll on State", youtubeId: "9dDQyViynmQ" },
       /  { title: "Film two", youtubeId: "YOUTUBE_ID" },/
