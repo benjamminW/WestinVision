@@ -32,7 +32,7 @@ button { font: inherit; }
 h1, h2, blockquote { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.055em; }
 h1 { margin: 0; font-size: clamp(76px, 11vw, 168px); line-height: .8; max-width: 1050px; }
 em { color: var(--accent); font-weight: 400; }
-h1 em { position: relative; left: .75em; }
+h1 em { position: relative; left: 3em; }
 .hero-bottom { display: flex; align-items: end; justify-content: space-between; margin-top: clamp(70px, 11vh, 130px); }
 .hero-bottom p { width: min(430px, 38vw); margin: 0; color: rgba(237,232,208,.68); font-size: clamp(15px, 1.2vw, 18px); line-height: 1.6; }
 .circle-link { width: 64px; height: 64px; border: 1px solid rgba(237,232,208,.35); border-radius: 50%; display: grid; place-items: center; font-size: 22px; transition: background .2s, color .2s; }
