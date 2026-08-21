@@ -43,7 +43,8 @@ window.WESTIN_PROJECTS = [
       /  { title: "Film two", youtubeId: "YOUTUBE_ID" },/
       ],
     },
-   
+
+
 
   /*
    * COPY THIS TEMPLATE TO ADD ANOTHER PROJECT:
@@ -61,3 +62,13 @@ window.WESTIN_PROJECTS = [
    * },
    */
 ];
+
+    window.WESTIN_REELS = [
+  {
+    title: "Community and Politics Reels",
+    category: "Politics",
+    instagramUrl: "https://www.instagram.com/reel/DcSIz8eMH0s/",
+    instagramUrl: "https://www.instagram.com/reel/DcMP86zpLEE/",
+    thumbnail: "assets/reel.JPEG"
+  },
+    ]
