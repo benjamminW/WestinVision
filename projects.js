@@ -94,6 +94,14 @@ window.WESTIN_REELS = [
         title: "FatherHood United - Back to School Recap",
         youtubeId: "iN1_97NIevM",
       },
+      {
+        title: "FatherHood United - Father's Day Event Recap",
+        youtubeId: "KX5sRoaeWPo",
+      },
+      {
+        title: "Home for Good - Maurice West",
+        youtubeId: "J-ykt4cN5y4",
+      },
     
     ],
   },
