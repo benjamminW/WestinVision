@@ -292,6 +292,12 @@ function renderReelStats() {
 
   if (!totals.length) return;
 
+  // Keep the About section's "Reel views" stat in step with the same total.
+  const aboutReelViews = document.querySelector("#about-reel-views");
+  if (aboutReelViews && totals[0]?.label === "Views and counting") {
+    aboutReelViews.textContent = `${formatStat(totals[0].value)}+`;
+  }
+
   const counters = totals.map((stat) => {
     const item = document.createElement("div");
     item.className = "reel-stat";
