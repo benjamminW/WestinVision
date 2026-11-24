@@ -83,6 +83,9 @@ window.WESTIN_PROJECTS = [
 /*
  * INSTAGRAM REELS
  *
+ * An Instagram reel can name `facebookCopy` (the same video posted on Facebook);
+ * Instagram hides view counts, so the daily stats job reads views from that copy.
+ *
  * Optional `views` and `likes` on each reel are added together for the
  * "views and counting" tally under the Reels heading. Update them whenever the
  * numbers grow; leave either one out if it is not known.
@@ -101,11 +104,16 @@ window.WESTIN_REELS = [
       {
         title: "Alderperson Bell Reel",
         instagramUrl: "https://www.instagram.com/reel/DcSIz8eMH0s/",
+        facebookCopy: "https://www.facebook.com/reel/1110200504768624",
+        views: 15000,
+        likes: 399,
       },
       {
         title: "Alderperson Bell Reel",
         instagramUrl: "https://www.instagram.com/reel/DcMP86zpLEE/",
-        likes: 82,
+        facebookCopy: "https://www.facebook.com/reel/1407985811471728",
+        views: 18000,
+        likes: 570,
       },
       {
         title: "Alderperson Bell Reel",

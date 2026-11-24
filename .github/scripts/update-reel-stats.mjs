@@ -64,7 +64,9 @@ const fetchers = {
 };
 
 // Multi-line reel objects only, so the one-line examples in the template comments are skipped.
-const REEL = /\{\n(\s+)title: "([^"]*)",\n\s+(instagramUrl|youtubeId|facebookUrl): "([^"]+)",\n(?:\s+views: (\d+),\n)?(?:\s+likes: (\d+),\n)?(\s+)\}/g;
+// An Instagram reel may name `facebookCopy`, the same video posted on Facebook: its public
+// views are used (Instagram hides views) and its reactions are added to the Instagram likes.
+const REEL = /\{\n(\s+)title: "([^"]*)",\n\s+(instagramUrl|youtubeId|facebookUrl): "([^"]+)",\n(?:\s+facebookCopy: "([^"]+)",\n)?(?:\s+views: (\d+),\n)?(?:\s+likes: (\d+),\n)?(\s+)\}/g;
 
 const source = readFileSync(FILE, "utf8");
 const reelsStart = source.indexOf("window.WESTIN_REELS");
@@ -74,9 +76,14 @@ let reelsPart = source.slice(reelsStart);
 const reels = [...reelsPart.matchAll(REEL)];
 const updates = await Promise.all(
   reels.map(async (match) => {
-    const [, , title, kind, value, oldViews, oldLikes] = match;
+    const [, , title, kind, value, facebookCopy, oldViews, oldLikes] = match;
     try {
       const fresh = await fetchers[kind](value);
+      if (facebookCopy) {
+        const copy = await fetchers.facebookUrl(facebookCopy);
+        fresh.views = copy.views;
+        fresh.likes = fresh.likes === null || copy.likes === null ? null : fresh.likes + copy.likes;
+      }
       return { match, fresh };
     } catch (error) {
       console.log(`! ${title}: lookup failed (${error.message}), kept views=${oldViews ?? "-"} likes=${oldLikes ?? "-"}`);
@@ -87,7 +94,7 @@ const updates = await Promise.all(
 
 let changed = 0;
 for (const { match, fresh } of updates.reverse()) {
-  const [whole, indent, title, kind, value, oldViews, oldLikes, closeIndent] = match;
+  const [whole, indent, title, kind, value, facebookCopy, oldViews, oldLikes, closeIndent] = match;
   const pick = (oldValue, freshValue) => {
     const previous = oldValue === undefined ? null : Number(oldValue);
     if (freshValue === null || Number.isNaN(freshValue)) return previous;
@@ -97,6 +104,7 @@ for (const { match, fresh } of updates.reverse()) {
   const likes = pick(oldLikes, fresh.likes);
 
   let replacement = `{\n${indent}title: "${title}",\n${indent}${kind}: "${value}",\n`;
+  if (facebookCopy) replacement += `${indent}facebookCopy: "${facebookCopy}",\n`;
   if (views !== null) replacement += `${indent}views: ${views},\n`;
   if (likes !== null) replacement += `${indent}likes: ${likes},\n`;
   replacement += `${closeIndent}}`;
