@@ -69,13 +69,9 @@ function openProject(project, trigger) {
 
   heading.append(headingMeta, title, description);
 
-  // Every film gets its own equal-size player in a grid.
+  // Every film gets its own full-width player, stacked so visitors scroll through them.
   const videoGrid = document.createElement("div");
   videoGrid.className = "video-grid";
-  videoGrid.style.setProperty(
-    "--video-columns",
-    String(project.videos.length === 3 ? 3 : Math.min(project.videos.length, 2)),
-  );
   videoGrid.setAttribute("aria-label", `${project.title} films`);
 
   project.videos.forEach((video, index) => {
