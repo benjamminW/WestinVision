@@ -69,6 +69,9 @@ h1 em { position: relative; left: 0em; }
 .reels-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 80px; }
 .reels-head h2 { margin: 25px 0 0; font: 400 clamp(64px, 8.5vw, 128px)/.86 Georgia, serif; letter-spacing: -.055em; }
 .reels-head > p { width: min(320px, 100%); margin: 0 0 9px; color: #625f59; line-height: 1.6; }
+.reel-stats { display: flex; flex-wrap: wrap; gap: 24px 90px; margin-top: -30px; margin-bottom: 80px; padding-top: 28px; border-top: 1px solid rgba(11,11,11,.18); }
+.reel-stat strong { display: block; font: 400 clamp(48px, 5.5vw, 80px)/1 Georgia, serif; letter-spacing: -.045em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.reel-stat span { display: block; margin-top: 12px; color: #625f59; font-size: 10px; text-transform: uppercase; letter-spacing: .18em; }
 .reels-grid { display: grid; gap: 70px; }
 .reel-collection { display: grid; grid-template-columns: minmax(210px, .8fr) minmax(0, 3fr); gap: 42px; border-top: 1px solid #bdb6a8; padding-top: 25px; }
 .reel-collection-meta h3 { margin: 0 0 8px; font: 400 clamp(30px, 3.2vw, 46px)/.95 Georgia, serif; letter-spacing: -.04em; }

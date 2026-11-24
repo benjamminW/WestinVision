@@ -83,6 +83,10 @@ window.WESTIN_PROJECTS = [
 /*
  * INSTAGRAM REELS
  *
+ * Optional `views` and `likes` on each reel are added together for the
+ * "views and counting" tally under the Reels heading. Update them whenever the
+ * numbers grow; leave either one out if it is not known.
+ *
  * Each collection becomes one group in the Reels section. Add additional
  * collections by copying the object below. A thumbnail may be reused across
  * reels or overridden on an individual reel with its own `thumbnail` value.
@@ -101,38 +105,54 @@ window.WESTIN_REELS = [
       {
         title: "Alderperson Bell Reel",
         instagramUrl: "https://www.instagram.com/reel/DcMP86zpLEE/",
+        likes: 82,
       },
       {
         title: "Alderperson Bell Reel",
         instagramUrl: "https://www.instagram.com/reel/DZuoPUiv2h6/",
+        likes: 66,
       },
       {
         title: "Alderperson Bell - Thanksgiving Dinner",
         facebookUrl: "https://www.facebook.com/reel/1484048110535934",
+        views: 3100,
+        likes: 115,
       },
       {
         title: "Alderperson Bell - Feeling Grateful",
         facebookUrl: "https://www.facebook.com/reel/901511039626855",
+        views: 3800,
+        likes: 106,
       },
       {
         title: "Alderperson Bell - Be A Buddy, Not A Bully March",
         facebookUrl: "https://www.facebook.com/reel/982484807898471",
+        views: 9700,
+        likes: 332,
       },
       {
         title: "Corey Dixon Reel",
         youtubeId: "HyHtmspZ6hA",
+        views: 4,
+        likes: 0,
       },
       {
         title: "FatherHood United - Back to School Recap",
         youtubeId: "iN1_97NIevM",
+        views: 2,
+        likes: 0,
       },
       {
         title: "FatherHood United - Father's Day Event Recap",
         youtubeId: "KX5sRoaeWPo",
+        views: 1,
+        likes: 0,
       },
       {
         title: "Home for Good - Maurice West",
         youtubeId: "J-ykt4cN5y4",
+        views: 3,
+        likes: 0,
       },
     
     ],
@@ -147,7 +167,7 @@ window.WESTIN_REELS = [
    *   category: "Campaign · Social",
    *   thumbnail: "assets/collection-cover.jpg",
    *   reels: [
-   *     { title: "Reel one", instagramUrl: "https://www.instagram.com/reel/REEL_CODE/" },
+   *     { title: "Reel one", instagramUrl: "https://www.instagram.com/reel/REEL_CODE/", views: 1200, likes: 85 },
    *     { title: "Reel two", instagramUrl: "https://www.instagram.com/reel/REEL_CODE/" },
    *     { title: "Facebook reel", facebookUrl: "https://www.facebook.com/reel/REEL_ID" },
    *   ],

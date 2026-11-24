@@ -270,8 +270,66 @@ function renderReels() {
   }
 }
 
+function formatStat(value) {
+  return value >= 10000
+    ? new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(value)
+    : value.toLocaleString("en-US");
+}
+
+// Adds up the optional `views` and `likes` on every reel in projects.js.
+function renderReelStats() {
+  const container = document.querySelector("#reel-stats");
+  if (!container) return;
+
+  const allReels = reelCollections.flatMap((collection) => collection.reels || []);
+  const totals = [
+    { value: allReels.reduce((sum, reel) => sum + (Number(reel.views) || 0), 0), label: "Views and counting" },
+    { value: allReels.reduce((sum, reel) => sum + (Number(reel.likes) || 0), 0), label: "Likes and reactions" },
+  ].filter((stat) => stat.value > 0);
+
+  if (!totals.length) return;
+
+  const counters = totals.map((stat) => {
+    const item = document.createElement("div");
+    item.className = "reel-stat";
+    const number = document.createElement("strong");
+    number.textContent = `${formatStat(stat.value)}+`;
+    const label = document.createElement("span");
+    label.textContent = stat.label;
+    item.append(number, label);
+    container.append(item);
+    return { number, target: stat.value };
+  });
+  container.hidden = false;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const countUp = () => {
+    const start = performance.now();
+    const duration = 1600;
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counters.forEach(({ number, target }) => {
+        number.textContent = `${formatStat(Math.round(target * eased))}+`;
+      });
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    if (entries.some((entry) => entry.isIntersecting)) {
+      statsObserver.disconnect();
+      countUp();
+    }
+  }, { threshold: 0.4 });
+  statsObserver.observe(container);
+}
+
 renderProjects();
 renderReels();
+renderReelStats();
 
 const reducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
