@@ -27,7 +27,7 @@ function youtubeEmbedUrl(videoId) {
       ? window.location.origin
       : "https://www.youtube.com";
   const params = new URLSearchParams({
-    autoplay: "1",
+    autoplay: "0",
     rel: "0",
     playsinline: "1",
     origin: pageOrigin,
@@ -69,77 +69,67 @@ function openProject(project, trigger) {
 
   heading.append(headingMeta, title, description);
 
-  const playerFrame = document.createElement("div");
-  playerFrame.className = "video-player-frame";
+  // Every film gets its own equal-size player in a grid.
+  const videoGrid = document.createElement("div");
+  videoGrid.className = "video-grid";
+  videoGrid.style.setProperty(
+    "--video-columns",
+    String(project.videos.length === 3 ? 3 : Math.min(project.videos.length, 2)),
+  );
+  videoGrid.setAttribute("aria-label", `${project.title} films`);
 
-  const player = document.createElement("iframe");
-  player.allow =
-    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-  player.referrerPolicy = "strict-origin-when-cross-origin";
-  player.allowFullscreen = true;
-  playerFrame.append(player);
+  project.videos.forEach((video, index) => {
+    const item = document.createElement("figure");
+    item.className = "video-grid-item";
 
-  const youtubeLink = document.createElement("a");
-  youtubeLink.className = "youtube-fallback";
-  youtubeLink.target = "_blank";
-  youtubeLink.rel = "noopener";
-  youtubeLink.textContent = "Having trouble? Watch on YouTube ↗";
+    const playerFrame = document.createElement("div");
+    playerFrame.className = "video-player-frame";
 
-  const videoList = document.createElement("div");
-  videoList.className = "video-list";
-  videoList.setAttribute("aria-label", `${project.title} films`);
+    const player = document.createElement("iframe");
+    player.src = youtubeEmbedUrl(video.youtubeId);
+    player.title = `${project.title}: ${video.title}`;
+    player.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    player.referrerPolicy = "strict-origin-when-cross-origin";
+    player.allowFullscreen = true;
+    playerFrame.append(player);
 
-  const videoButtons = project.videos.map((video, index) => {
-    const button = document.createElement("button");
-    button.className = "video-choice";
-    button.type = "button";
+    const caption = document.createElement("figcaption");
 
     const number = document.createElement("span");
+    number.className = "video-grid-number";
     number.textContent = String(index + 1).padStart(2, "0");
 
     const name = document.createElement("strong");
     name.textContent = video.title;
 
-    const action = document.createElement("span");
-    action.className = "video-choice-action";
-    action.textContent = "Play ↗";
-
-    button.append(number, name, action);
-    button.addEventListener("click", () => selectVideo(index));
-    videoList.append(button);
-    return button;
-  });
-
-  function selectVideo(index) {
-    const video = project.videos[index];
-    player.src = youtubeEmbedUrl(video.youtubeId);
-    player.title = `${project.title}: ${video.title}`;
+    const youtubeLink = document.createElement("a");
+    youtubeLink.className = "youtube-fallback";
     youtubeLink.href = `https://www.youtube.com/watch?v=${video.youtubeId}`;
+    youtubeLink.target = "_blank";
+    youtubeLink.rel = "noopener";
+    youtubeLink.textContent = "YouTube ↗";
 
-    videoButtons.forEach((button, buttonIndex) => {
-      const active = buttonIndex === index;
-      button.classList.toggle("active", active);
-      button.setAttribute("aria-pressed", String(active));
-    });
-  }
+    caption.append(number, name, youtubeLink);
+    item.append(playerFrame, caption);
+    videoGrid.append(item);
+  });
 
   closeButton.addEventListener("click", () => modal.close());
   modal.addEventListener("click", (event) => {
     if (event.target === modal) modal.close();
   });
   modal.addEventListener("close", () => {
-    player.src = "about:blank";
     document.body.classList.remove("modal-open");
     modal.remove();
     trigger.focus();
   });
 
-  panel.append(closeButton, heading, playerFrame, youtubeLink, videoList);
+  panel.append(closeButton, heading, videoGrid);
   modal.append(panel);
   document.body.append(modal);
   document.body.classList.add("modal-open");
   modal.showModal();
-  selectVideo(0);
   closeButton.focus();
 }
 
