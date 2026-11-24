@@ -43,6 +43,26 @@ window.WESTIN_PROJECTS = [
       ],
     },
 
+  {
+    id: "family-counseling-services",
+    title: "Family Counseling Services",
+    category: "Nonprofit · Event Films",
+    description:
+      "A CEO message and Butterfly Award film for Family Counseling Services' 2026 celebration.",
+    thumbnail:
+      "https://i.ytimg.com/vi/NzqcILu39ok/maxresdefault.jpg",
+    videos: [
+      {
+        title: "CEO Message 2026",
+        youtubeId: "NzqcILu39ok",
+      },
+      {
+        title: "Butterfly Award 2026",
+        youtubeId: "pAJqfcmgg-8",
+      },
+    ],
+  },
+
   /*
    * COPY THIS TEMPLATE TO ADD ANOTHER PROJECT:
    *
