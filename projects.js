@@ -116,7 +116,7 @@ window.WESTIN_REELS = [
         title: "Alderperson Bell - Thanksgiving Dinner",
         facebookUrl: "https://www.facebook.com/reel/1484048110535934",
         views: 3100,
-        likes: 115,
+        likes: 116,
       },
       {
         title: "Alderperson Bell - Feeling Grateful",
