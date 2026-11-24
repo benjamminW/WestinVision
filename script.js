@@ -261,7 +261,10 @@ function renderReels() {
 
   if (window.instgrm) {
     processEmbeds();
-  } else if (!document.querySelector('script[src*="instagram.com/embed.js"]')) {
+  } else if (
+    reelsGrid.querySelector(".instagram-media") &&
+    !document.querySelector('script[src*="instagram.com/embed.js"]')
+  ) {
     const instagramScript = document.createElement("script");
     instagramScript.src = "https://www.instagram.com/embed.js";
     instagramScript.async = true;

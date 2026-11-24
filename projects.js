@@ -102,18 +102,16 @@ window.WESTIN_REELS = [
     thumbnail: "assets/reel.JPEG",
     reels: [
       {
-        title: "Alderperson Bell Reel",
-        instagramUrl: "https://www.instagram.com/reel/DcSIz8eMH0s/",
-        facebookCopy: "https://www.facebook.com/reel/1110200504768624",
+        title: "Alderperson Bell - Johnston Avenue",
+        facebookUrl: "https://www.facebook.com/reel/1110200504768624",
         views: 15000,
         likes: 399,
       },
       {
-        title: "Alderperson Bell Reel",
-        instagramUrl: "https://www.instagram.com/reel/DcMP86zpLEE/",
-        facebookCopy: "https://www.facebook.com/reel/1407985811471728",
+        title: "Alderperson Bell - $65M Infrastructure",
+        facebookUrl: "https://www.facebook.com/reel/1407985811471728",
         views: 18000,
-        likes: 570,
+        likes: 488,
       },
       {
         title: "Alderperson Bell - Thanksgiving Dinner",

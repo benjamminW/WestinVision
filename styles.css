@@ -167,9 +167,15 @@ footer { border-top: 1px solid rgba(237,232,208,.15); padding: 35px 0; }.footer-
 
 .instagram-reel-item {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Titles sit just above their video, so videos in a row line up even when a title wraps. */
 .instagram-reel-item h3 {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
   margin: 0 0 14px;
   font: 400 20px Georgia, serif;
 }
