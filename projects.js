@@ -116,11 +116,6 @@ window.WESTIN_REELS = [
         likes: 570,
       },
       {
-        title: "Alderperson Bell Reel",
-        instagramUrl: "https://www.instagram.com/reel/DZuoPUiv2h6/",
-        likes: 66,
-      },
-      {
         title: "Alderperson Bell - Thanksgiving Dinner",
         facebookUrl: "https://www.facebook.com/reel/1484048110535934",
         views: 3100,
