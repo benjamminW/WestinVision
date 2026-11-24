@@ -107,6 +107,10 @@ window.WESTIN_REELS = [
         instagramUrl: "https://www.instagram.com/reel/DZuoPUiv2h6/",
       },
       {
+        title: "Alderperson Bell - Thanksgiving Dinner",
+        facebookUrl: "https://www.facebook.com/reel/1484048110535934",
+      },
+      {
         title: "Corey Dixon Reel",
         youtubeId: "HyHtmspZ6hA",
       },
@@ -137,6 +141,7 @@ window.WESTIN_REELS = [
    *   reels: [
    *     { title: "Reel one", instagramUrl: "https://www.instagram.com/reel/REEL_CODE/" },
    *     { title: "Reel two", instagramUrl: "https://www.instagram.com/reel/REEL_CODE/" },
+   *     { title: "Facebook reel", facebookUrl: "https://www.facebook.com/reel/REEL_ID" },
    *   ],
    * },
    */

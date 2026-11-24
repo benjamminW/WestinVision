@@ -177,13 +177,15 @@ footer { border-top: 1px solid rgba(237,232,208,.15); padding: 35px 0; }.footer-
   margin: 0 !important;
 }
 
-.youtube-reel {
+.youtube-reel,
+.facebook-reel {
   aspect-ratio: 9 / 16;
   overflow: hidden;
   background: #111;
 }
 
-.youtube-reel iframe {
+.youtube-reel iframe,
+.facebook-reel iframe {
   width: 100%;
   height: 100%;
   border: 0;

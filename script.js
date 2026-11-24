@@ -234,6 +234,25 @@ function renderReels() {
         `;
       }
 
+      if (reel.facebookUrl) {
+        const embedUrl = `https://www.facebook.com/plugins/video.php?${new URLSearchParams({
+          href: reel.facebookUrl,
+          show_text: "false",
+        })}`;
+        item.innerHTML = `
+          <h3>${reel.title}</h3>
+          <div class="facebook-reel">
+            <iframe
+              src="${embedUrl}"
+              title="${reel.title}"
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        `;
+      }
+
       reelsGrid.appendChild(item);
     });
   });
