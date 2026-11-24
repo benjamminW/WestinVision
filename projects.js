@@ -111,6 +111,10 @@ window.WESTIN_REELS = [
         facebookUrl: "https://www.facebook.com/reel/1484048110535934",
       },
       {
+        title: "Alderperson Bell - Feeling Grateful",
+        facebookUrl: "https://www.facebook.com/reel/901511039626855",
+      },
+      {
         title: "Corey Dixon Reel",
         youtubeId: "HyHtmspZ6hA",
       },
